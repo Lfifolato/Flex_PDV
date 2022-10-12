@@ -8,6 +8,7 @@ export default class CreateProdutoValidator {
     id_fornecedor: schema.number(),
     nome: schema.string({ trim: true }),
     descricao: schema.string({ trim: true }),
+    bar_cod: schema.string({ trim: true }),
     vlr_custo: schema.number(),
     per_lucro: schema.number(),
   })

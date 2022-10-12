@@ -15,6 +15,7 @@ export default class extends BaseSchema {
         .onUpdate('CASCADE')
       table.string('nome')
       table.string('descricao')
+      table.string('bar_cod', 50)
       table.float('vlr_custo')
       table.float('per_lucro').comment('Porcentagem de lucro na venda do produto')
       table.float('vlr_venda')

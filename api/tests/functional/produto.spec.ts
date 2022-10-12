@@ -36,6 +36,7 @@ test.group('Produtos', (group) => {
       id_fornecedor: 4,
       nome: 'Leite',
       descricao: 'Leite desnatado',
+      bar_cod: '1234567654321',
       vlr_custo: 5.6,
       per_lucro: 22,
     })
@@ -48,6 +49,7 @@ test.group('Produtos', (group) => {
     const response = await client.post('/produto').bearerToken(data.token).json({
       nome: 'Leite',
       descricao: 'Leite desnatado',
+      bar_cod: '1234567654321',
       vlr_custo: 5.6,
       per_lucro: 22,
     })
@@ -61,6 +63,7 @@ test.group('Produtos', (group) => {
       id_fornecedor: 50,
       nome: 'Leite',
       descricao: 'Leite desnatado',
+      bar_cod: '1234567654321',
       vlr_custo: 5.6,
       per_lucro: 22,
     })
@@ -77,6 +80,7 @@ test.group('Produtos', (group) => {
       id_fornecedor: fornecedor.id,
       nome: 'Leite',
       descricao: 'Leite desnatado',
+      bar_cod: '1234567654321',
       vlr_custo: 10,
       per_lucro: 20,
     })
@@ -93,6 +97,7 @@ test.group('Produtos', (group) => {
       id_fornecedor: fornecedor.id,
       nome: 'Leite',
       descricao: 'Leite desnatado',
+      bar_cod: '1234567654321',
       vlr_custo: 10,
       per_lucro: 20,
     })
@@ -137,6 +142,7 @@ test.group('Produtos', (group) => {
       id_fornecedor: fornecedor.id,
       nome: 'Leite',
       descricao: 'Leite desnatado',
+      bar_cod: '1234567654321',
       vlr_custo: 5.6,
       per_lucro: 22,
     })
@@ -152,6 +158,7 @@ test.group('Produtos', (group) => {
       id_fornecedor: fornecedor.id,
       nome: 'Leite',
       descricao: 'Leite desnatado',
+      bar_cod: '1234567654321',
       vlr_custo: 5.6,
       per_lucro: 22,
     })
@@ -169,6 +176,7 @@ test.group('Produtos', (group) => {
       id_fornecedor: 99,
       nome: 'Leite',
       descricao: 'Leite desnatado',
+      bar_cod: '1234567654321',
       vlr_custo: 5.6,
       per_lucro: 22,
     })
@@ -188,6 +196,7 @@ test.group('Produtos', (group) => {
       id_fornecedor: fornecedor.id,
       nome: 'Leite',
       descricao: 'Leite desnatado',
+      bar_cod: '1234567654321',
       vlr_custo: 5.6,
       per_lucro: 22,
     })
@@ -206,6 +215,7 @@ test.group('Produtos', (group) => {
       id_fornecedor: fornecedor.id,
       nome: 'Leite',
       descricao: 'Leite desnatado',
+      bar_cod: '1234567654321',
       vlr_custo: 5.6,
       per_lucro: 22,
     })

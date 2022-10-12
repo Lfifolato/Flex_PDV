@@ -15,6 +15,9 @@ export default class Produto extends BaseModel {
   public descricao: string
 
   @column()
+  public bar_cod: string
+
+  @column()
   public vlr_custo: number
 
   @column()
