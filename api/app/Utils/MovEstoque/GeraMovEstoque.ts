@@ -19,8 +19,9 @@ export const GeraMovEstoque = async (idProduto: number, tipo: string, quantidade
   }
   const estoqueAtual = produto.qtd_estoque
 
+  await MovEstoque.create(dataMov)
+
   if (tipo == 'E') {
-    await MovEstoque.create(dataMov)
     const novaEstoque = estoqueAtual + quantidade
     produto.merge({ qtd_estoque: novaEstoque })
 
@@ -28,7 +29,6 @@ export const GeraMovEstoque = async (idProduto: number, tipo: string, quantidade
   }
 
   if (tipo == 'S') {
-    await MovEstoque.create(dataMov)
     const novaEstoque = estoqueAtual - quantidade
     produto.merge({ qtd_estoque: novaEstoque })
 
