@@ -18,7 +18,7 @@ export default class extends BaseSchema {
       table.float('vlr_custo')
       table.float('per_lucro').comment('Porcentagem de lucro na venda do produto')
       table.float('vlr_venda')
-      table.integer('qtd_estoque')
+      table.integer('qtd_estoque').defaultTo(0)
       table.boolean('ativo').defaultTo(true)
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })

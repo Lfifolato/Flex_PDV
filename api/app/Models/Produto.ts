@@ -31,9 +31,7 @@ export default class Produto extends BaseModel {
 
   @beforeSave()
   public static async geraCustoProduto(produto: Produto) {
-    if (produto.per_lucro) {
-      produto.vlr_custo = (produto.vlr_custo * produto.per_lucro) / 100
-    }
+    produto.vlr_venda = produto.vlr_custo + (produto.vlr_custo * produto.per_lucro) / 100
   }
 
   @column.dateTime({ autoCreate: true })
