@@ -88,14 +88,16 @@ export const ServiceProduto = () => ({
         return RetornoData
       }
 
-      const validFornecedor = await Fornecedor.findBy('id', data.id_fornecedor)
+      if (data.id_fornecedor) {
+        const validFornecedor = await Fornecedor.findBy('id', data.id_fornecedor)
 
-      if (!validFornecedor) {
-        RetornoData = {
-          error: true,
-          message: 'Fornecedor não localizado',
+        if (!validFornecedor) {
+          RetornoData = {
+            error: true,
+            message: 'Fornecedor não localizado',
+          }
+          return RetornoData
         }
-        return RetornoData
       }
 
       await geraLog('Produto', Id, userLog, produto)
