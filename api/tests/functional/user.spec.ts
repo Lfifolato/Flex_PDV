@@ -183,7 +183,7 @@ test.group('User', (group) => {
     response.assertStatus(400)
     response.assertBodyContains({ Error: true, message: 'Usuários Nao Localizado' })
   })
-  test('[GET] User Show Success', async ({ client, assert }) => {
+  test('[GET] User Show Success', async ({ client }) => {
     const data = await GeraToken()
     const user = await UserFactory.create()
     const response = await client.get(`user/${user.id}`).bearerToken(data.token)
@@ -201,7 +201,7 @@ test.group('User', (group) => {
   test('[DELETE] User Delete to not found', async ({ client }) => {
     const data = await GeraToken()
 
-    const response = await client.get(`user/${50}`).bearerToken(data.token)
+    const response = await client.get(`user/${9999}`).bearerToken(data.token)
 
     response.assertStatus(400)
     response.assertBodyContains({ Error: true, message: 'Usuários Nao Localizado' })
