@@ -128,7 +128,7 @@ export const ServiceProduto = () => ({
       if (!produto) {
         RetornoData = {
           error: true,
-          message: 'Produto Deletado com sucesso',
+          message: 'Produto não localizado',
         }
         return RetornoData
       }

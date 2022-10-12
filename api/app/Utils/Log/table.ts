@@ -11,4 +11,8 @@ export const table = [
     model: 'Fornecedor',
     table: 'fornecedors',
   },
+  {
+    model: 'Produto',
+    table: 'produtos',
+  },
 ]

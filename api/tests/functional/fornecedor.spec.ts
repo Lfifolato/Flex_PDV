@@ -52,7 +52,7 @@ test.group('Fornecedor', (group) => {
     await FornecedorFactory.merge({ cpf_cnpj: '14090400' }).create()
 
     const data = await GeraToken()
-    const response = await client.post('user').bearerToken(data.token).json({
+    const response = await client.post('fornecedor').bearerToken(data.token).json({
       nome: 'Test Fonrecedor',
       descricao: 'Testt',
       tipo: 'juridica',

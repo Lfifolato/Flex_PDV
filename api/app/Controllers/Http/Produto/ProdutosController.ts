@@ -9,7 +9,7 @@ export default class ProdutosController {
     const Service = ServiceProduto()
     const res = await Service.GetAll()
     if (res?.error == true) {
-      return response.badRequest({ Error: true, message: res.message })
+      return response.badRequest({ error: true, message: res.message })
     }
     return response.ok(res.data)
   }
@@ -21,7 +21,7 @@ export default class ProdutosController {
     const res = await Service.Create(data)
 
     if (res?.error == true) {
-      return response.badRequest({ Error: true, message: res.message })
+      return response.badRequest({ error: true, message: res.message })
     }
     return response.ok({ error: res?.error, message: res?.message })
   }
@@ -33,7 +33,7 @@ export default class ProdutosController {
     const res = await Service.Show(id)
 
     if (res?.error == true) {
-      return response.badRequest({ Error: res.error, message: res.message })
+      return response.badRequest({ error: res.error, message: res.message })
     }
     return response.ok(res?.data)
   }
@@ -46,10 +46,10 @@ export default class ProdutosController {
 
     const data = await request.validate(UpdateProdutoValidator)
 
-    const res = await Service.Update(id, data, userLog)
+    const res = await Service.Update(id, data, userLog.id)
 
     if (res?.error == true) {
-      return response.badRequest({ Error: res.error, message: res.message })
+      return response.badRequest({ error: res.error, message: res.message })
     }
     return response.ok(res)
   }
@@ -61,8 +61,8 @@ export default class ProdutosController {
     const res = await Service.Delete(id)
 
     if (res?.error == true) {
-      return response.badRequest({ Error: res.error, message: res.message })
+      return response.badRequest({ error: res.error, message: res.message })
     }
-    return response.ok(res)
+    return response.ok({ error: res?.error, message: res?.message })
   }
 }
