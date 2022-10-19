@@ -2,6 +2,8 @@ import { DateTime } from 'luxon'
 import { BaseModel, beforeSave, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Produto extends BaseModel {
+  public static table = 'tb_produto'
+
   @column({ isPrimary: true })
   public id: number
 

@@ -2,6 +2,8 @@ import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
 export default class MovEstoque extends BaseModel {
+  public static table = 'tb_mov_estoque'
+
   @column({ isPrimary: true })
   public id: number
 

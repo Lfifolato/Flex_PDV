@@ -9,12 +9,12 @@ import Produto from 'App/Models/Produto'
 
 test.group('Produtos', (group) => {
   group.each.setup(async () => {
-    await Database.rawQuery('DELETE FROM produtos ')
-    return Database.rawQuery('DELETE FROM produtos ')
+    await Database.rawQuery('DELETE FROM tb_produto ')
+    return Database.rawQuery('DELETE FROM tb_produto ')
   })
   group.teardown(async () => {
-    await Database.rawQuery('DELETE FROM produtos ')
-    return Database.rawQuery('DELETE FROM produtos ')
+    await Database.rawQuery('DELETE FROM tb_produto ')
+    return Database.rawQuery('DELETE FROM tb_produto ')
   })
 
   test('[GET] Produto All invalid Token', async ({ client }) => {

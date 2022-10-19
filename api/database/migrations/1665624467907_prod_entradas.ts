@@ -1,26 +1,22 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'tb_produto'
+  protected tableName = 'tb_prod_entradas'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table
-        .integer('id_fornecedor')
+        .integer('id_Produto')
         .unsigned()
         .references('id')
-        .inTable('tb_fornecedor')
+        .inTable('tb_produto')
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
-      table.string('nome')
-      table.string('descricao')
-      table.string('bar_cod', 50)
-      table.float('vlr_custo')
-      table.float('per_lucro').comment('Porcentagem de lucro na venda do produto')
-      table.float('vlr_venda')
-      table.integer('qtd_estoque').defaultTo(0)
-      table.boolean('ativo').defaultTo(true)
+      table.boolean('ref_nf')
+      table.string('nro_nf')
+      table.string('serie_nf')
+      table.string('chave_nf')
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })

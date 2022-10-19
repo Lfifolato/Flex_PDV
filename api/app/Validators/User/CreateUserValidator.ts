@@ -6,9 +6,9 @@ export default class CreateUserValidator {
 
   public schema = schema.create({
     nome: schema.string({ trim: true }),
-    cpf: schema.string({ trim: true }, [rules.unique({ table: 'users', column: 'cpf' })]),
+    cpf: schema.string({ trim: true }, [rules.unique({ table: 'tb_user', column: 'cpf' })]),
     email: schema.string({ trim: true }, [
-      rules.unique({ table: 'users', column: 'email' }),
+      rules.unique({ table: 'tb_user', column: 'email' }),
       rules.email(),
     ]),
     password: schema.string({ trim: true }),

@@ -7,12 +7,12 @@ import { GeraToken } from '../Utils/GeraToken'
 
 test.group('User', (group) => {
   group.each.setup(async () => {
-    await Database.rawQuery('DELETE FROM users ')
-    return Database.rawQuery('DELETE FROM users ')
+    await Database.rawQuery('DELETE FROM tb_user ')
+    return Database.rawQuery('DELETE FROM tb_user ')
   })
   group.teardown(async () => {
-    await Database.rawQuery('DELETE FROM users ')
-    return Database.rawQuery('DELETE FROM users ')
+    await Database.rawQuery('DELETE FROM tb_user ')
+    return Database.rawQuery('DELETE FROM tb_user ')
   })
 
   test('[GET] User All invalid Token', async ({ client }) => {

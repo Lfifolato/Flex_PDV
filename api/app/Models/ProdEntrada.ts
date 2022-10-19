@@ -1,19 +1,10 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
-export default class Pdv extends BaseModel {
-  public static table = 'tb_pdv'
+export default class ProdEntrada extends BaseModel {
+  public static table = 'tb_prod_entradas'
   @column({ isPrimary: true })
   public id: number
-
-  @column()
-  public nome: string
-
-  @column()
-  public user_ativo: number
-
-  @column()
-  public ativo: boolean
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

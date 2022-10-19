@@ -3,6 +3,8 @@ import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import Produto from './Produto'
 
 export default class Fornecedor extends BaseModel {
+  public static table = 'tb_fornecedor'
+
   @column({ isPrimary: true })
   public id: number
 

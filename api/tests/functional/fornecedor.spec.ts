@@ -7,12 +7,12 @@ import Log from 'App/Models/Log'
 
 test.group('Fornecedor', (group) => {
   group.each.setup(async () => {
-    await Database.rawQuery('DELETE FROM fornecedors ')
-    return Database.rawQuery('DELETE FROM fornecedors ')
+    await Database.rawQuery('DELETE FROM tb_fornecedor ')
+    return Database.rawQuery('DELETE FROM tb_fornecedor ')
   })
   group.teardown(async () => {
-    await Database.rawQuery('DELETE FROM fornecedors ')
-    return Database.rawQuery('DELETE FROM fornecedors ')
+    await Database.rawQuery('DELETE FROM tb_fornecedor ')
+    return Database.rawQuery('DELETE FROM tb_fornecedor ')
   })
 
   test('[GET] Fornecedor All invalid Token', async ({ client }) => {

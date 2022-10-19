@@ -9,7 +9,7 @@ export default class CreateFornecedorValidator {
     descricao: schema.string({ trim: true }),
     tipo: schema.string({ trim: true }),
     cpf_cnpj: schema.string({ trim: true }, [
-      rules.unique({ table: 'fornecedors', column: 'cpf_cnpj' }),
+      rules.unique({ table: 'tb_fornecedor', column: 'cpf_cnpj' }),
     ]),
     email_comercial: schema.string({ trim: true }, [rules.email()]),
     telefone_comercial: schema.string({ trim: true }),
