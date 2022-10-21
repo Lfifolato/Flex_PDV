@@ -93,7 +93,7 @@ export const ServiceFornecedor = () => ({
         }
       }
 
-      await geraLog('Fornecedor', Id, userLog, fornecedor)
+      await geraLog('fornecedor', Id, userLog, fornecedor)
 
       fornecedor.merge(data)
 

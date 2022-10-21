@@ -228,7 +228,8 @@ test.group('Fornecedor', (group) => {
     })
     const validLog = await Log.query()
       .where('id_ref', fornecedor.id)
-      .where('table_name', 'fornecedors')
+      .where('table_name', 'tb_fornecedor')
+
     assert.notEmpty(validLog)
     response.assertStatus(200)
     response.assertBodyContains({

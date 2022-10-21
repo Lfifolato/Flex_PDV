@@ -100,7 +100,7 @@ export const ServiceProduto = () => ({
         }
       }
 
-      await geraLog('Produto', Id, userLog, produto)
+      await geraLog('produto', Id, userLog, produto)
 
       produto.merge(data)
 

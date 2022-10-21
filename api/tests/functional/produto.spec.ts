@@ -219,7 +219,7 @@ test.group('Produtos', (group) => {
       vlr_custo: 5.6,
       per_lucro: 22,
     })
-    const validLog = await Log.query().where('id_ref', Produto.id).where('table_name', 'Produtos')
+    const validLog = await Log.query().where('id_ref', Produto.id).where('table_name', 'tb_produto')
     assert.notEmpty(validLog)
     response.assertStatus(200)
     response.assertBodyContains({

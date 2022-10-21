@@ -1,18 +1,18 @@
 export const table = [
   {
-    model: 'User',
-    table: 'users',
+    model: 'user',
+    table: 'tb_user',
   },
   {
-    model: 'Pdv',
-    table: 'pdvs',
+    model: 'pdv',
+    table: 'tb_pdv',
   },
   {
-    model: 'Fornecedor',
-    table: 'fornecedors',
+    model: 'fornecedor',
+    table: 'tb_fornecedor',
   },
   {
-    model: 'Produto',
-    table: 'produtos',
+    model: 'produto',
+    table: 'tb_produto',
   },
 ]
