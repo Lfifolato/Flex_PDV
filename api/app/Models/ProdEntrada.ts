@@ -6,6 +6,27 @@ export default class ProdEntrada extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public id_Produto: number
+
+  @column()
+  public qtd_produto: number
+
+  @column()
+  public ref_nf: boolean
+
+  @column()
+  public nro_nf: string
+
+  @column()
+  public serie_nf: string
+
+  @column()
+  public chave_nf: string
+
+  @column()
+  public dta_nf: Date
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
