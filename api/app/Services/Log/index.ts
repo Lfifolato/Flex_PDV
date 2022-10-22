@@ -1,6 +1,5 @@
 /* eslint-disable eqeqeq */
 import { RetornoDataType } from '../Types/index'
-import Database from '@ioc:Adonis/Lucid/Database'
 import { table } from 'App/Utils/Log/table'
 import Log from 'App/Models/Log'
 
