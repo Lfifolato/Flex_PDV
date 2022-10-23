@@ -21,3 +21,6 @@ import './Fornecedor/routes'
 
 //Rota Produto
 import './Produto/routes'
+
+//Rota prod_entrada
+import './ProdEntrada/routes'

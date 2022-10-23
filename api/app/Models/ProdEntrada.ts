@@ -10,7 +10,7 @@ export default class ProdEntrada extends BaseModel {
   public id_Produto: number
 
   @column()
-  public qtd_produto: number
+  public qtd_entrada: number
 
   @column()
   public ref_nf: boolean

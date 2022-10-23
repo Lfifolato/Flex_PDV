@@ -13,7 +13,7 @@ export default class extends BaseSchema {
         .inTable('tb_produto')
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
-      table.integer('qtd_produto')
+      table.integer('qtd_entrada')
       table.boolean('ref_nf')
       table.string('nro_nf')
       table.string('serie_nf')
