@@ -111,7 +111,7 @@ test.group('User', (group) => {
   test('[PUT] User to not found', async ({ client }) => {
     const data = await GeraToken()
 
-    const response = await client.put(`user/${50}`).bearerToken(data.token).json({
+    const response = await client.put(`user/${9999}`).bearerToken(data.token).json({
       nome: 'User Test',
       cpf: '14090400',
       email: 'userr@example.com',
@@ -178,7 +178,7 @@ test.group('User', (group) => {
   test('[GET] User Show to not found', async ({ client }) => {
     const data = await GeraToken()
 
-    const response = await client.get(`user/${50}`).bearerToken(data.token)
+    const response = await client.get(`user/${999999}`).bearerToken(data.token)
 
     response.assertStatus(400)
     response.assertBodyContains({ Error: true, message: 'Usuários Nao Localizado' })
