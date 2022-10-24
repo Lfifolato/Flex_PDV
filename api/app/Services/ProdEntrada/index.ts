@@ -53,30 +53,4 @@ export const ServiceProdEntrada = () => ({
       return RetornoData
     }
   },
-  Show: async (Id: number) => {
-    var RetornoData: RetornoDataType
-    try {
-      const validEntrada = await ProdEntrada.findBy('id', Id)
-
-      if (!validEntrada) {
-        RetornoData = {
-          error: true,
-          message: 'Entrada não localizada',
-        }
-      }
-
-      RetornoData = {
-        error: false,
-        data: validEntrada,
-      }
-
-      return RetornoData
-    } catch (error) {
-      RetornoData = {
-        error: true,
-        message: error.message,
-      }
-      return RetornoData
-    }
-  },
 })

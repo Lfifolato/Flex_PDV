@@ -24,16 +24,4 @@ export default class ProdEntradasController {
     }
     return response.ok({ error: res?.error, message: res?.message })
   }
-
-  public async show({ response, params }: HttpContextContract) {
-    let id = params.id
-    const Service = ServiceProdEntrada()
-
-    const res = await Service.Show(id)
-
-    if (res?.error == true) {
-      return response.badRequest({ error: res.error, message: res.message })
-    }
-    return response.ok(res?.data)
-  }
 }
