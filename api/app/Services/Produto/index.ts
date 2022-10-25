@@ -104,6 +104,12 @@ export const ServiceProduto = () => ({
             message: 'Fornecedor não localizado',
           }
           return RetornoData
+        } else if (validFornecedor.ativo == false) {
+          RetornoData = {
+            error: true,
+            message: 'Fornecedor Inativo',
+          }
+          return RetornoData
         }
       }
 
