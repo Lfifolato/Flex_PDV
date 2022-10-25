@@ -21,6 +21,7 @@ export default class extends BaseSchema {
         .comment(
           'ponto_vantagem e quantidade de pontos de vantagem que cliente tem disponível sendo que adicionado 100% do valor da compra'
         )
+        .defaultTo(0)
       table.boolean('ativo').defaultTo(true)
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })

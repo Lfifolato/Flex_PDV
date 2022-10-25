@@ -15,4 +15,8 @@ export const table = [
     model: 'produto',
     table: 'tb_produto',
   },
+  {
+    model: 'cliente',
+    table: 'tb_cliente',
+  },
 ]

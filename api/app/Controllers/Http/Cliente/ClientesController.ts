@@ -38,14 +38,14 @@ export default class ClientesController {
     return response.ok(res?.data)
   }
 
-  public async update({ params, request, response }: HttpContextContract) {
+  public async update({ params, request, response, auth }: HttpContextContract) {
     const Service = ServiceCliente()
-
+    const userLog = await auth.authenticate()
     let id = params.id
 
     const data = await request.validate(UpdateClienteValidator)
 
-    const res = await Service.Update(id, data)
+    const res = await Service.Update(id, data, userLog.id)
 
     if (res?.error == true) {
       return response.badRequest({ error: res.error, message: res.message })

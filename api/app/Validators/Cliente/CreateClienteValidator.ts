@@ -7,7 +7,7 @@ export default class CreateClienteValidator {
   public schema = schema.create({
     nome: schema.string({ trim: true }),
     cpf: schema.string({ trim: true }, [rules.unique({ table: 'tb_cliente', column: 'cpf' })]),
-    email: schema.string.optional({ trim: true }),
+    email: schema.string.optional({ trim: true }, [rules.email()]),
     telefone: schema.string.optional({ trim: true }),
     notificar: schema.boolean(),
     cep: schema.string.optional({ trim: true }),

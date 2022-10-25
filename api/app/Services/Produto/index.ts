@@ -82,7 +82,7 @@ export const ServiceProduto = () => ({
       return RetornoData
     }
   },
-  Update: async (Id: number, data: any, userLog) => {
+  Update: async (Id: number, data: any, userLog: number) => {
     var RetornoData: RetornoDataType
     try {
       const produto = await Produto.findBy('id', Id)

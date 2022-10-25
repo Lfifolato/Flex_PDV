@@ -1,5 +1,6 @@
 /* eslint-disable eqeqeq */
 import Cliente from 'App/Models/Cliente'
+import { geraLog } from 'App/Utils/Log/geraLog'
 import { RetornoDataType } from '../Types/index'
 
 export const ServiceCliente = () => ({
@@ -41,9 +42,9 @@ export const ServiceCliente = () => ({
   Show: async (Id: number) => {
     var RetornoData: RetornoDataType
     try {
-      const filterCliente = await Cliente.findBy('id', Id)
+      const cliente = await Cliente.findBy('id', Id)
 
-      if (!filterCliente) {
+      if (!cliente) {
         RetornoData = {
           error: true,
           message: 'Cliente nāo localizado',
@@ -53,7 +54,7 @@ export const ServiceCliente = () => ({
 
       RetornoData = {
         error: false,
-        data: filterCliente,
+        data: cliente,
       }
       return RetornoData
     } catch (error) {
@@ -64,9 +65,39 @@ export const ServiceCliente = () => ({
       return RetornoData
     }
   },
-  Update: async (Id: number, data: any) => {
+  Update: async (Id: number, data: any, userLog: number) => {
     var RetornoData: RetornoDataType
     try {
+      const cliente = await Cliente.findBy('id', Id)
+
+      if (!cliente) {
+        RetornoData = {
+          error: true,
+          message: 'Cliente nāo localizado',
+        }
+        return RetornoData
+      }
+
+      if (data.cpf != cliente.id) {
+        const validCpf = await Cliente.findBy('cpf', data.cpf)
+
+        if (cliente.cpf != validCpf?.cpf) {
+          RetornoData = {
+            error: true,
+            message: 'cpf ja cadastrado para outro cliente',
+          }
+          return RetornoData
+        }
+      }
+      await geraLog('cliente', Id, userLog, cliente)
+      cliente.merge(data)
+
+      await cliente.save()
+      RetornoData = {
+        error: false,
+        message: 'Cliente Atualizado com sucesso',
+      }
+      return RetornoData
     } catch (error) {
       RetornoData = {
         error: true,
@@ -78,9 +109,9 @@ export const ServiceCliente = () => ({
   alterStatus: async (Id: number) => {
     var RetornoData: RetornoDataType
     try {
-      const filterCliente = await Cliente.findBy('id', Id)
+      const cliente = await Cliente.findBy('id', Id)
 
-      if (!filterCliente) {
+      if (!cliente) {
         RetornoData = {
           error: true,
           message: 'Cliente nāo localizado',
@@ -88,9 +119,9 @@ export const ServiceCliente = () => ({
         return RetornoData
       }
 
-      if (filterCliente.ativo == true) {
-        filterCliente.merge({ ativo: false })
-        filterCliente.save()
+      if (cliente.ativo == true) {
+        cliente.merge({ ativo: false })
+        cliente.save()
         RetornoData = {
           error: false,
           message: 'Status Alterado cliente Inativado com sucesso',
@@ -98,9 +129,9 @@ export const ServiceCliente = () => ({
         return RetornoData
       }
 
-      if (filterCliente.ativo == false) {
-        filterCliente.merge({ ativo: true })
-        filterCliente.save()
+      if (cliente.ativo == false) {
+        cliente.merge({ ativo: true })
+        cliente.save()
         RetornoData = {
           error: false,
           message: 'Status Alterado cliente Ativado com sucesso',
