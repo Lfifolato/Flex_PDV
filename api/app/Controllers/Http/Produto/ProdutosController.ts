@@ -58,7 +58,7 @@ export default class ProdutosController {
     const Service = ServiceProduto()
     let id = params.id
 
-    const res = await Service.Delete(id)
+    const res = await Service.alterStatus(id)
 
     if (res?.error == true) {
       return response.badRequest({ error: res.error, message: res.message })

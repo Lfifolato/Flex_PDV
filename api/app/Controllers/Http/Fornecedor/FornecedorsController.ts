@@ -58,7 +58,7 @@ export default class FornecedorsController {
     const Service = ServiceFornecedor()
     let id = params.id
 
-    const res = await Service.Delete(id)
+    const res = await Service.alterStatus(id)
 
     if (res?.error == true) {
       return response.badRequest({ Error: res.error, message: res.message })

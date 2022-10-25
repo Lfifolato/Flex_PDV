@@ -260,6 +260,9 @@ test.group('Fornecedor', (group) => {
     const response = await client.delete(`fornecedor/${fornecedor.id}`).bearerToken(data.token)
 
     response.assertStatus(200)
-    response.assertBodyContains({ error: false, message: 'Fornecedor deletado com sucesso' })
+    response.assertBodyContains({
+      error: false,
+      message: 'Status Alterado cliente Inativado com sucesso',
+    })
   })
 })

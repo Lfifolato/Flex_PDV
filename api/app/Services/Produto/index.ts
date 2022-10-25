@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import Fornecedor from 'App/Models/Fornecedor'
 import Produto from 'App/Models/Produto'
 import { geraLog } from 'App/Utils/Log/geraLog'
@@ -30,6 +31,12 @@ export const ServiceProduto = () => ({
         RetornoData = {
           error: true,
           message: 'Fornecedor não localizado',
+        }
+        return RetornoData
+      } else if (validFornecedor.ativo == false) {
+        RetornoData = {
+          error: true,
+          message: 'Fornecedor Inativo',
         }
         return RetornoData
       }
@@ -120,7 +127,7 @@ export const ServiceProduto = () => ({
       return RetornoData
     }
   },
-  Delete: async (Id: number) => {
+  alterStatus: async (Id: number) => {
     var RetornoData: RetornoDataType
     try {
       const produto = await Produto.findBy('id', Id)
@@ -133,13 +140,25 @@ export const ServiceProduto = () => ({
         return RetornoData
       }
 
-      await produto.delete()
-
-      RetornoData = {
-        error: false,
-        message: 'Produto deletado com sucesso',
+      if (produto.ativo == true) {
+        produto.merge({ ativo: false })
+        produto.save()
+        RetornoData = {
+          error: false,
+          message: 'Status Alterado Produto Inativado com sucesso',
+        }
+        return RetornoData
       }
-      return RetornoData
+
+      if (produto.ativo == false) {
+        produto.merge({ ativo: true })
+        produto.save()
+        RetornoData = {
+          error: false,
+          message: 'Status Alterado Produto Ativado com sucesso',
+        }
+        return RetornoData
+      }
     } catch (error) {
       RetornoData = {
         error: true,

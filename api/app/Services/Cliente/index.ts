@@ -1,19 +1,17 @@
 /* eslint-disable eqeqeq */
-import Fornecedor from 'App/Models/Fornecedor'
-import { geraLog } from 'App/Utils/Log/geraLog'
+import Cliente from 'App/Models/Cliente'
 import { RetornoDataType } from '../Types/index'
 
-export const ServiceFornecedor = () => ({
+export const ServiceCliente = () => ({
   GetAll: async () => {
     var RetornoData: RetornoDataType
     try {
-      const allFornecedor = await Fornecedor.all()
+      const allCliente = await Cliente.all()
 
       RetornoData = {
         error: false,
-        data: allFornecedor,
+        data: allCliente,
       }
-
       return RetornoData
     } catch (error) {
       RetornoData = {
@@ -25,11 +23,11 @@ export const ServiceFornecedor = () => ({
   Create: async (data: any) => {
     var RetornoData: RetornoDataType
     try {
-      await Fornecedor.create(data)
+      await Cliente.create(data)
 
       RetornoData = {
         error: false,
-        message: 'Fornecedor Criado com sucesso',
+        message: 'Cliente criado com sucesso',
       }
       return RetornoData
     } catch (error) {
@@ -43,20 +41,19 @@ export const ServiceFornecedor = () => ({
   Show: async (Id: number) => {
     var RetornoData: RetornoDataType
     try {
-      const fornecedor = await Fornecedor.findBy('id', Id)
+      const filterCliente = await Cliente.findBy('id', Id)
 
-      if (!fornecedor) {
+      if (!filterCliente) {
         RetornoData = {
           error: true,
-          message: 'Fornecedor não localizado',
+          message: 'Cliente nāo localizado',
         }
-
         return RetornoData
       }
-      await fornecedor.load('Produtos')
+
       RetornoData = {
         error: false,
-        data: fornecedor,
+        data: filterCliente,
       }
       return RetornoData
     } catch (error) {
@@ -67,43 +64,9 @@ export const ServiceFornecedor = () => ({
       return RetornoData
     }
   },
-  Update: async (Id: number, data: any, userLog) => {
+  Update: async (Id: number, data: any) => {
     var RetornoData: RetornoDataType
     try {
-      const fornecedor = await Fornecedor.findBy('id', Id)
-
-      if (!fornecedor) {
-        RetornoData = {
-          error: true,
-          message: 'Fornecedor não localizado',
-        }
-
-        return RetornoData
-      }
-
-      const validCpfCnpj = await Fornecedor.findBy('cpf_cnpj', data.cpf_cnpj)
-
-      if (validCpfCnpj?.id != fornecedor.id) {
-        if (validCpfCnpj) {
-          RetornoData = {
-            error: true,
-            message: 'CPF ou CNPJ ja cadastrado para outro fornecedor',
-          }
-          return RetornoData
-        }
-      }
-
-      await geraLog('fornecedor', Id, userLog, fornecedor)
-
-      fornecedor.merge(data)
-
-      await fornecedor.save()
-
-      RetornoData = {
-        error: false,
-        message: 'Fornecedor Atualizado com sucesso',
-      }
-      return RetornoData
     } catch (error) {
       RetornoData = {
         error: true,
@@ -115,20 +78,19 @@ export const ServiceFornecedor = () => ({
   alterStatus: async (Id: number) => {
     var RetornoData: RetornoDataType
     try {
-      const fornecedor = await Fornecedor.findBy('id', Id)
+      const filterCliente = await Cliente.findBy('id', Id)
 
-      if (!fornecedor) {
+      if (!filterCliente) {
         RetornoData = {
           error: true,
-          message: 'Fornecedor não localizado',
+          message: 'Cliente nāo localizado',
         }
-
         return RetornoData
       }
 
-      if (fornecedor.ativo == true) {
-        fornecedor.merge({ ativo: false })
-        fornecedor.save()
+      if (filterCliente.ativo == true) {
+        filterCliente.merge({ ativo: false })
+        filterCliente.save()
         RetornoData = {
           error: false,
           message: 'Status Alterado cliente Inativado com sucesso',
@@ -136,9 +98,9 @@ export const ServiceFornecedor = () => ({
         return RetornoData
       }
 
-      if (fornecedor.ativo == false) {
-        fornecedor.merge({ ativo: true })
-        fornecedor.save()
+      if (filterCliente.ativo == false) {
+        filterCliente.merge({ ativo: true })
+        filterCliente.save()
         RetornoData = {
           error: false,
           message: 'Status Alterado cliente Ativado com sucesso',

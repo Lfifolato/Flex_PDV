@@ -249,6 +249,9 @@ test.group('Produtos', (group) => {
     const response = await client.delete(`/produto/${Produto.id}`).bearerToken(data.token)
 
     response.assertStatus(200)
-    response.assertBodyContains({ error: false, message: 'Produto deletado com sucesso' })
+    response.assertBodyContains({
+      error: false,
+      message: 'Status Alterado Produto Inativado com sucesso',
+    })
   })
 })

@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import ProdEntrada from 'App/Models/ProdEntrada'
 import Produto from 'App/Models/Produto'
 import { GeraMovEstoque } from 'App/Utils/MovEstoque/GeraMovEstoque'
@@ -32,6 +33,12 @@ export const ServiceProdEntrada = () => ({
         RetornoData = {
           error: true,
           message: 'Produto não localizado',
+        }
+        return RetornoData
+      } else if (validProduto.ativo == false) {
+        RetornoData = {
+          error: true,
+          message: 'Produto Inativo',
         }
         return RetornoData
       }
