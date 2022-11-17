@@ -24,11 +24,13 @@ export async function AddUserPdv(userId: number, pdvId: Number) {
       }
       return retornoData
     } else if (validPdv.ativo == true) {
-      retornoData = {
-        message: `Pdv Ja esta Ativo com UserId ${validPdv.user_ativo}`,
-        error: false,
+      if (validPdv.user_ativo != userId) {
+        retornoData = {
+          message: `Pdv Ja esta Ativo com UserId ${validPdv.user_ativo}`,
+          error: false,
+        }
+        return retornoData
       }
-      return retornoData
     } else {
       validPdv.merge({ user_ativo: userId, ativo: true })
       await validPdv.save()

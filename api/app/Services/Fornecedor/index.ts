@@ -131,7 +131,7 @@ export const ServiceFornecedor = () => ({
         fornecedor.save()
         RetornoData = {
           error: false,
-          message: 'Status Alterado cliente Inativado com sucesso',
+          message: 'Status Alterado Fornecedor Inativado com sucesso',
         }
         return RetornoData
       }
@@ -141,7 +141,7 @@ export const ServiceFornecedor = () => ({
         fornecedor.save()
         RetornoData = {
           error: false,
-          message: 'Status Alterado cliente Ativado com sucesso',
+          message: 'Status Alterado Fornecedor Ativado com sucesso',
         }
         return RetornoData
       }

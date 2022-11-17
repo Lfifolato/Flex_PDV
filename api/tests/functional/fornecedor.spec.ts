@@ -262,7 +262,7 @@ test.group('Fornecedor', (group) => {
     response.assertStatus(200)
     response.assertBodyContains({
       error: false,
-      message: 'Status Alterado cliente Inativado com sucesso',
+      message: 'Status Alterado Fornecedor Inativado com sucesso',
     })
   })
 })
