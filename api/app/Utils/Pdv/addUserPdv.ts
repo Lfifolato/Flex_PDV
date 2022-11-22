@@ -1,22 +1,28 @@
 /* eslint-disable eqeqeq */
+
+import Pdv from 'App/Models/Pdv'
+import { ServiceCaixaPdv } from 'App/Services/CaixaPdv'
+import { RetornoDataType } from 'app/Services/Types/index'
+
 /**
  * @param  {number} userId
  * @param  {Number} pdvId
  */
 
-import Pdv from 'App/Models/Pdv'
-
-type RetornoDataType = {
-  error: boolean
-  message: string
-}
-
-export async function AddUserPdv(userId: number, pdvId: Number) {
+export async function AddUserPdv(userId: number, pdvId: number) {
   var retornoData: RetornoDataType
-
+  const service = ServiceCaixaPdv()
   try {
     const validPdv = await Pdv.findBy('id', pdvId)
+    const validCaixa = await service.validCaixaAberto(pdvId)
 
+    if (validCaixa.error == true) {
+      retornoData = {
+        message: validCaixa.message,
+        error: true,
+      }
+      return retornoData
+    }
     if (!validPdv) {
       retornoData = {
         message: 'Pdv não existe',

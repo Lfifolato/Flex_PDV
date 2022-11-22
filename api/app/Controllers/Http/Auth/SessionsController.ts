@@ -43,8 +43,8 @@ export default class SessionsController {
 
     const Pdv = await AddUserPdv(user.id, nroPdv)
 
-    if (Pdv?.error == false) {
-      return response.ok({ Error: true, message: Pdv.message })
+    if (Pdv?.error == true) {
+      return response.badRequest({ Error: true, message: Pdv.message })
     }
     const token = await auth.attempt(email, password, {
       expiresIn: '10 days',
