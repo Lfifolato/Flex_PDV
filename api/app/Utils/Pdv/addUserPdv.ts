@@ -14,7 +14,7 @@ export async function AddUserPdv(userId: number, pdvId: number) {
   const service = ServiceCaixaPdv()
   try {
     const validPdv = await Pdv.findBy('id', pdvId)
-    const validCaixa = await service.validCaixaAberto(pdvId)
+    const validCaixa = await service.validCaixaAberto(pdvId, userId)
 
     if (validCaixa.error == true) {
       retornoData = {

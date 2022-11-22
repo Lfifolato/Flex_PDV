@@ -4,9 +4,10 @@ import moment from 'moment'
 import { RetornoDataType } from '../Types/index'
 
 export const ServiceCaixaPdv = () => ({
-  validCaixaAberto: async (id_pdv: number) => {
+  validCaixaAberto: async (id_pdv: number, id_operador: number) => {
     var RetornoData: RetornoDataType
     try {
+      const dataAtual = moment().format('l')
       const data = await CaixaPdv.query().where('id_pdv', id_pdv).andWhere('ativo', true)
 
       if (data.length == 0) {
@@ -16,9 +17,18 @@ export const ServiceCaixaPdv = () => ({
         return RetornoData
       }
 
+      if (data[0].id_operador == id_operador) {
+        if (dataAtual !== data[0].data_create) {
+          RetornoData = {
+            error: true,
+            message: `Caixa do Pdv: ${data[0].id_pdv} Esta em aberto na Data ${data[0].data_create}`,
+          }
+          return RetornoData
+        }
+      }
+
       RetornoData = {
-        error: true,
-        message: `Caixa do Pdv: ${data[0].id_pdv} Esta em aberto na Data ${data[0].data_create}`,
+        error: false,
       }
       return RetornoData
     } catch (error) {
